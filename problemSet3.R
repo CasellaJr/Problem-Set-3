@@ -10,6 +10,7 @@ rm(list=ls())
 ## swiss data
 s <- swiss 
 s
+attach(s)  # valutare se fare l'attach di questo o dello standardizzato
 
 #PRELIMINARY ANALYSIS
 dim(s)
@@ -156,11 +157,12 @@ plot(df_pca$x[,1],df_pca$x[,2],type = "n",asp=1,
 text(df_pca$x[,1],df_pca$x[,2],labels=hc_labels, 
      col = hc_labels) 
 
-centroids<-aggregate(s,by=list(hc_labels),FUN=mean)[,-1]
-round(centroids,2)
+centroids<-aggregate(df_pca$x[,1:2],by=list(hc_labels),FUN=mean)[,-1]
+#round(centroids,2)
+points(centroids)
 centroids
-matplot(t(centroids),type="l",col=c(1:3),axes=F,lty=c(1,1,1),
-        ylab="swiss", xlab="variables")
+#matplot(t(centroids),type="l",col=c(1:3),axes=F,lty=c(1,1,1),
+#        ylab="swiss", xlab="variables")
 axis(2)
 axis(1,at=1:6,las=2,cex.axis=0.7,
      labels=names(s))
@@ -169,3 +171,4 @@ legend("bottomright",paste("Cluster",1:3),
        lty=c(1,1,1),col=c(1:3),bty="n")
 
 
+# prova
