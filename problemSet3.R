@@ -161,14 +161,10 @@ plot(df_pca$x[,1],df_pca$x[,2],type = "n",asp=1,
 text(df_pca$x[,1],df_pca$x[,2],labels=hc_labels, 
      col = hc_labels) 
 
-<<<<<<< HEAD
 centroids<-aggregate(df_pca$x[,1:2],by=list(hc_labels),FUN=mean)[,-1]
 #round(centroids,2)
 points(centroids)
-=======
-centroids<-aggregate(df,by=list(hc_labels),FUN=mean)[,-1]
-round(centroids,2)
->>>>>>> ddee65d7f27baf2c04ec0837599e05bb24e152e5
+
 centroids
 #matplot(t(centroids),type="l",col=c(1:3),axes=F,lty=c(1,1,1),
 #        ylab="swiss", xlab="variables")
@@ -180,9 +176,7 @@ legend("bottomright",paste("Cluster",1:3),
        lty=c(1,1,1),col=c(1:3),bty="n")
 
 
-<<<<<<< HEAD
-# prova
-=======
+
 #POINT 2
 'Find a 3 clusters solution with k-means using the centroids found at previous point
 as initial choice of seeds. Plot the observations in the space of the first two principal 
@@ -236,4 +230,3 @@ mean(s[km_swiss$cluster==3,]$Catholic)
 #So, cluster 2 contains the highest percentage of catholic people. For this reason in cluster 2
 #we have the highest fertility.
 
->>>>>>> ddee65d7f27baf2c04ec0837599e05bb24e152e5
