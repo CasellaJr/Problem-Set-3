@@ -217,6 +217,12 @@ mean(s[km_swiss$cluster==2,]$Fertility)
 mean(s[km_swiss$cluster==3,]$Fertility)
 
 'The cluster with the highest fertility is cluster 2, with 80.55'
-
-
+#Let's see why
+plot(Fertility ~ Catholic, swiss, xlab="Catholic", las=3)
+#The higher degree of catholic the higher fertility
+mean(s[km_swiss$cluster==1,]$Catholic)
+mean(s[km_swiss$cluster==2,]$Catholic)
+mean(s[km_swiss$cluster==3,]$Catholic)
+#So, cluster 2 contains the highest percentage of catholic people. For this reason in cluster 2
+#we have the highest fertility.
 
