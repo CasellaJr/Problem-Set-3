@@ -155,19 +155,15 @@ summary(df_pca)
 round(df_pca$rotation[,1:2],3)
 #The first two components account for about 73% of the data variability
 df_pca$rotation[,1:2]
+aggregate(df,by=list(hc_labels),FUN=mean)[,-1]
+centroids<-aggregate(df_pca$x[,1:2],by=list(hc_labels),FUN=mean)[,-1]
 
 plot(df_pca$x[,1],df_pca$x[,2],type = "n",asp=1,   
      xlab = "PC1", ylab = "PC2", main="Swiss data, K=3")            
 text(df_pca$x[,1],df_pca$x[,2],labels=hc_labels, 
      col = hc_labels) 
+points(centroids,cex=1.5) # aggiungere cose grafiche 
 
-centroids<-aggregate(df_pca$x[,1:2],by=list(hc_labels),FUN=mean)[,-1]
-#round(centroids,2)
-points(centroids)
-
-centroids
-#matplot(t(centroids),type="l",col=c(1:3),axes=F,lty=c(1,1,1),
-#        ylab="swiss", xlab="variables")
 axis(2)
 axis(1,at=1:5,las=2,cex.axis=0.7,
      labels=names(s[, 2:6]))
@@ -182,6 +178,7 @@ legend("bottomright",paste("Cluster",1:3),
 as initial choice of seeds. Plot the observations in the space of the first two principal 
 components as done in the previous point and compare the k-means cluster solution
 with the hierarchical one.'
+centroids<-aggregate(df,by=list(hc_labels),FUN=mean)[,-1]
 
 km_swiss<-kmeans(df, iter.max=100, algorithm = "MacQueen",
                    centers= centroids)
@@ -197,10 +194,7 @@ out<-cbind(km_swiss$cluster,dd[ind])
 colnames(out)<-c("cluster","dist_centr")
 round(out[1:6,],2)
 
-plot(PC2~PC1, data=df_pca$x,pch=16,asp=1, cex=0.8,   
-     xlab = "PC1", ylab = "PC2",   
-     main=paste("Swiss data, WSS=",WSS3, sep=""),
-     col=km_swiss$cluster)            
+plot(PC2~PC1, data=df_pca$x,pch=16,asp=1, cex=0.8,xlab = "PC1", ylab = "PC2",main=paste("Swiss data, WSS=",WSS3, sep=""),col=km_swiss$cluster)            
 text(PC2~PC1, data=df_pca$x, labels=km_label3,
      pos=4,cex=0.8,offset=0.1,
      col=km_swiss$cluster) 
