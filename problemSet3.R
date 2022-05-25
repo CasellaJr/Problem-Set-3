@@ -210,12 +210,11 @@ colnames(out)<-c("cluster","dist_centr")
 round(out[1:6,],2)
 
 plot(PC2~PC1, data=df_pca$x,pch=16,asp=1, cex=0.8,xlab = "PC1", ylab = "PC2",main=paste("Swiss data, WSS=",WSS3, sep=""),col=km_swiss$cluster)            
-text(PC2~PC1, data=df_pca$x, labels=km_label3,
-     pos=4,cex=0.8,offset=0.1,
-     col=km_swiss$cluster) 
+text(PC2~PC1, data=df_pca$x, labels=km_label3,pos=4,cex=0.8,offset=0.1,col=km_swiss$cluster) 
 legend("topleft",paste("clust",unique(km_swiss$cluster)),
        lty=rep(1,k),col=unique(km_swiss$cluster),bty="n",cex=0.8)
 
+km_label3 == hc_labels # tutti true tranne Boudry
 'THE 2 CLUSTERS (WARD AND KMEANS) PRESENT EXACTLY THE SAME RESULTS EXCEPT FOR THE OBSERVATION IN THE PERFECT MIDDLE:
 WITH WARD IT IS CLUSTERED AS CLUSTER 3, WHILE WITH KMEANS IS CLUSTER 1. ALL THE OTHERS ARE EQUAL'
 
@@ -238,4 +237,14 @@ mean(s[km_swiss$cluster==2,]$Catholic)
 mean(s[km_swiss$cluster==3,]$Catholic)
 #So, cluster 2 contains the highest percentage of catholic people. For this reason in cluster 2
 #we have the highest fertility.
+
+
+# POINT 4
+
+
+
+
+# POINT 5
+
+
 
