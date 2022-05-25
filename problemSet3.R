@@ -142,6 +142,21 @@ rect.hclust(hc, k=3, border="red")
 hc_labels<-cutree(hc,k=3); 
 hc_labels
 table(hc_labels)
+
+# grafici che confrontano le densità delle variabili nei cluster (manca legend)
+# mettere il titolo della singola variabile
+# modificando i limiti dei plot si possono adattare a tutte le variabili
+plot(density(Fertility[hc_labels==1]),xlim=range(25,105),ylim=range(0,0.06),col="blue")
+par(new=TRUE)
+plot(density(Fertility[hc_labels==2]),,xlim=range(25,105),ylim=range(0,0.06),col="red")
+par(new=TRUE)
+plot(density(Fertility[hc_labels==3]),,xlim=range(25,105),ylim=range(0,0.06),col="green")
+
+plot(density(Agriculture[hc_labels==1]),xlim=range(15,105),ylim=range(0,0.06),col="blue")
+par(new=TRUE)
+plot(density(Fertility[hc_labels==2]),,xlim=range(15,105),ylim=range(0,0.06),col="red")
+par(new=TRUE)
+plot(density(Fertility[hc_labels==3]),,xlim=range(15,105),ylim=range(0,0.06),col="green")
 'INTEPRETAZIONE:
 il cluster con v. de gevene contiene comuni da 3 cantoni: Cantone Neuchatel (neuchatel, boudry, la chauxfdn, le locle, valdetrevers),
 Cantone Vaud (vevey, lausanne), cantone ginevra (ginevra, rive droite, rive gauche) + un comune francese. Mia possibile interpretazione
