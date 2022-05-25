@@ -240,11 +240,32 @@ mean(s[km_swiss$cluster==3,]$Catholic)
 
 
 # POINT 4
+"text consider now model-based clustering with gaussian mixtures. Use r library to select the best model
+with 3 groups by BIC method. What model is chosen? Discuss"
+s <- s[,2:6]
 
+library(mclust)
 
+#mclust already uses BIC to choose the best model
+fit<-Mclust(s,G=3)
+fit$modelName
+# best one = EEE  (elliposidal, equal volume, shape and orientation)
+# The above model fits a separate mean vector for each class, but the same ellipsoidal covariance
+#matrix, which is essentially equivalent to linear discriminant analysis.
+
+plot(fit, what="classification")
+
+table(hc_labels,fit$classification)
 
 
 # POINT 5
+"COmpare the k-means cluster solution with the model based one. total freedom in this
+can you make sense of the differences"
 
+s[fit$classification==3,]
+fit$classification == hc_labels # confronto hc
+fit$classification == km_label3 # confronto km
+table(km_label3,fit$classification)
 
-
+"the only three that now form the third cluster are geneve, rive droite
+and rive gauche that belong to canton geneve"
