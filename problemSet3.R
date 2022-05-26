@@ -59,8 +59,8 @@ hopkins(df, n = nrow(df)-1)
 # Compute Hopkins statistic for a random dataset
 set.seed(123)
 hopkins(random_df, n = nrow(random_df)-1)
-'It can be seen that the swiss data set (df) is clusterable because his H value (0.3089652) is close enough to 0. 
-However, the random_df dataset is not clusterable (H = 0.4818205).
+'It can be seen that the swiss data set (df) is clusterable because his H value (0.3165011) is close enough to 0. 
+However, the random_df dataset is not clusterable (H = 0.5237217).
 '
 
 'There is also a visual method for confirming the cluster tendency of a dataset, 
@@ -158,10 +158,7 @@ plot(density(Fertility[hc_labels==2]),,xlim=range(15,105),ylim=range(0,0.06),col
 par(new=TRUE)
 plot(density(Fertility[hc_labels==3]),,xlim=range(15,105),ylim=range(0,0.06),col="green")
 'INTEPRETAZIONE:
-il cluster con v. de gevene contiene comuni da 3 cantoni: Cantone Neuchatel (neuchatel, boudry, la chauxfdn, le locle, valdetrevers),
-Cantone Vaud (vevey, lausanne), cantone ginevra (ginevra, rive droite, rive gauche) + un comune francese. Mia possibile interpretazione
-è che o sono tutti cantoni vicini alla francia, o sono tutti cantoni la cui lingua ufficiale è il francese (questo lo ho verificato)
-VERIFICARE CHE: negli altri cluster, le lingue ufficiali non siano il francese e vedere geograficamente se sono vicini alla francia)'
+Mandato screen con tutti i cantoni segnati'
 
 'Now that I know that Ward D2 is the best method I can Plot the observations in the space of the first
 two principal components with colors determined by cluster memberships.'
