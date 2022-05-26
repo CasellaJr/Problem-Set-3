@@ -146,17 +146,27 @@ table(hc_labels)
 # grafici che confrontano le densità delle variabili nei cluster (manca legend)
 # mettere il titolo della singola variabile
 # modificando i limiti dei plot si possono adattare a tutte le variabili
-plot(density(Fertility[hc_labels==1]),xlim=range(25,105),ylim=range(0,0.06),col="blue")
-par(new=TRUE)
-plot(density(Fertility[hc_labels==2]),,xlim=range(25,105),ylim=range(0,0.06),col="red")
-par(new=TRUE)
-plot(density(Fertility[hc_labels==3]),,xlim=range(25,105),ylim=range(0,0.06),col="green")
 
-plot(density(Agriculture[hc_labels==1]),xlim=range(15,105),ylim=range(0,0.06),col="blue")
+par(mfrow=c(1,3))
+plot(density(Agriculture[hc_labels==1]),xlim=range(0,100),ylim=range(0,0.06),col="blue",main="")
 par(new=TRUE)
-plot(density(Fertility[hc_labels==2]),,xlim=range(15,105),ylim=range(0,0.06),col="red")
+plot(density(Agriculture[hc_labels==2]),,xlim=range(0,100),ylim=range(0,0.06),col="red",main="")
 par(new=TRUE)
-plot(density(Fertility[hc_labels==3]),,xlim=range(15,105),ylim=range(0,0.06),col="green")
+plot(density(Agriculture[hc_labels==3]),,xlim=range(0,100),ylim=range(0,0.06),col="green",main="Agriculture")
+legend("topleft",y=-2.5,paste("Cluster",1:3), lty=c(1,1,1),col=c(1:3),bty="n")
+
+plot(density(Examination[hc_labels==1]),xlim=range(0,60),ylim=range(0,0.1),col="blue",main="")
+par(new=TRUE)
+plot(density(Examination[hc_labels==2]),,xlim=range(0,60),ylim=range(0,0.1),col="red",main="")
+par(new=TRUE)
+plot(density(Examination[hc_labels==3]),,xlim=range(0,60),ylim=range(0,0.1),col="green",main="Examination")
+
+plot(density(Fertility[hc_labels==1]),xlim=range(20,100),ylim=range(0,0.1),col="blue",main="")
+par(new=TRUE)
+plot(density(Fertility[hc_labels==2]),,xlim=range(20,100),ylim=range(0,0.1),col="red",main="")
+par(new=TRUE)
+plot(density(Fertility[hc_labels==3]),,xlim=range(20,100),ylim=range(0,0.1),col="green",main="Fertility")
+
 'INTEPRETAZIONE:
 il cluster con v. de gevene contiene comuni da 3 cantoni: Cantone Neuchatel (neuchatel, boudry, la chauxfdn, le locle, valdetrevers),
 Cantone Vaud (vevey, lausanne), cantone ginevra (ginevra, rive droite, rive gauche) + un comune francese. Mia possibile interpretazione
