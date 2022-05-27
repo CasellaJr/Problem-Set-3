@@ -166,7 +166,7 @@ par(new=TRUE)
 plot(density(Fertility[hc_labels==2]),,xlim=range(20,100),ylim=range(0,0.1),col="red",main="")
 par(new=TRUE)
 plot(density(Fertility[hc_labels==3]),,xlim=range(20,100),ylim=range(0,0.1),col="green",main="Fertility")
-
+par(mfrow=c(1,1))
 'INTEPRETAZIONE:
 Mandato screen con tutti i cantoni segnati'
 
@@ -247,8 +247,8 @@ mean(s[km_swiss$cluster==3,]$Catholic)
 
 
 # POINT 4
-"text consider now model-based clustering with gaussian mixtures. Use r library to select the best model
-with 3 groups by BIC method. What model is chosen? Discuss"
+"Consider now model-based clustering with Gaussian mixtures. 
+Use R library Mclust to select the best model with 3 groups by BIC method. What model is chosen? Discuss."
 s <- s[,2:6]
 
 library(mclust)
@@ -266,7 +266,7 @@ table(hc_labels,fit$classification)
 
 
 # POINT 5
-"COmpare the k-means cluster solution with the model based one. total freedom in this
+"Compare the k-means cluster solution with the model based one. total freedom in this
 can you make sense of the differences"
 
 s[fit$classification==3,]
